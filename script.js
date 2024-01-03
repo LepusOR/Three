@@ -1,11 +1,12 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import Stats from 'three/examples/jsm/libs/stats.module'
+import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js'
 
 const scene = new THREE.Scene()
 
-const geometry = new THREE.BoxGeometry(50, 50, 50)
-const material = new THREE.MeshPhongMaterial({ color: 0x00ffff, shininess: 100 })
+const geometry = new THREE.SphereGeometry(50)
+const material = new THREE.MeshPhongMaterial({ color: 0x00ffff, shininess: 100, specular: 0xff0000 })
 const mesh = new THREE.Mesh(geometry, material)
 mesh.position.set(0, 0, 0)
 scene.add(mesh)
@@ -87,3 +88,32 @@ window.onresize = () => {
   camera.aspect = window.innerWidth / window.innerHeight
   camera.updateProjectionMatrix()
 }
+
+const gui = new GUI()
+gui.domElement.style.right = '0px'
+gui.domElement.style.width = '300px'
+
+let geometryFolder = gui.addFolder('物体')
+let geoPositionFolder = geometryFolder.addFolder('位置')
+let materialFolder = gui.addFolder('材质')
+let lightFolder = gui.addFolder('光源')
+geometryFolder.close()
+
+geoPositionFolder
+  .add(mesh.position, 'x', 0, 100)
+  .name('x轴位置')
+  .onChange(val => {
+    // mesh.position.y = val
+  })
+geoPositionFolder.add(mesh.position, 'y', [-100, 0, 100]).name('y轴位置')
+geoPositionFolder.add(mesh.position, 'z', { backward: -100, center: 0, forward: 100 }).name('z轴位置')
+
+materialFolder.addColor(material, 'color').name('material颜色')
+materialFolder.addColor(material, 'specular').name('高光颜色')
+// .onChange(val => {
+//   material.color.set(val)
+// })
+
+materialFolder.add(material, 'wireframe').name('是否显示框架')
+
+lightFolder.add(ambient, 'intensity', 0, 2.0).name('ambient环境光强度').step(0.1)
