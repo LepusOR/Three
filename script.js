@@ -2,14 +2,15 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import Stats from 'three/examples/jsm/libs/stats.module'
 import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js'
+import Model from './model'
 
 const scene = new THREE.Scene()
 
-const geometry = new THREE.SphereGeometry(50)
-const material = new THREE.MeshPhongMaterial({ color: 0x00ffff, shininess: 100, specular: 0xff0000 })
-const mesh = new THREE.Mesh(geometry, material)
-mesh.position.set(0, 0, 0)
-scene.add(mesh)
+// const geometry = new THREE.SphereGeometry(50)
+// const material = new THREE.MeshPhongMaterial({ color: 0x00ffff, shininess: 100, specular: 0xff0000 })
+// const mesh = new THREE.Mesh(geometry, material)
+// mesh.position.set(0, 0, 0)
+// scene.add(mesh)
 
 // const num = 10
 // for (let i = 0; i < num; i++) {
@@ -19,8 +20,9 @@ scene.add(mesh)
 //     scene.add(mesh)
 //   }
 // }
+scene.add(Model)
 
-const axesHelper = new THREE.AxesHelper(100, 100, 100)
+const axesHelper = new THREE.AxesHelper(10)
 
 const pointLight = new THREE.PointLight(0xffffff, 1.0)
 const pointLightHelper = new THREE.PointLightHelper(pointLight, 10)
