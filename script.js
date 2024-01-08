@@ -20,9 +20,15 @@ const scene = new THREE.Scene()
 //     scene.add(mesh)
 //   }
 // }
-scene.add(Model)
+const geometry = new THREE.SphereGeometry(50, 8, 8)
+// console.log(geometry.attributes.position);
+// console.log(geometry.index);
+const material = new THREE.MeshLambertMaterial({ color: 0x00ffff, wireframe: true })
+const mesh = new THREE.Mesh(geometry, material)
+scene.add(mesh)
+// scene.add(Model)
 
-const axesHelper = new THREE.AxesHelper(10)
+const axesHelper = new THREE.AxesHelper(100)
 
 const pointLight = new THREE.PointLight(0xffffff, 1.0)
 const pointLightHelper = new THREE.PointLightHelper(pointLight, 10)
@@ -50,9 +56,9 @@ camera.position.set(200, 200, 200)
 camera.lookAt(100, 0, 0)
 
 scene.add(axesHelper)
-scene.add(pointLight)
-scene.add(pointLightHelper)
-// scene.add(ambient)
+// scene.add(pointLight)
+// scene.add(pointLightHelper)
+scene.add(ambient)
 // scene.add(directionalLight)
 // scene.add(directionalLightHelper)
 
