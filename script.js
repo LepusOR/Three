@@ -23,8 +23,10 @@ const scene = new THREE.Scene()
 const geometry = new THREE.BoxGeometry(50, 50, 50)
 // console.log(geometry.attributes.position);
 // console.log(geometry.index);
-const material = new THREE.MeshLambertMaterial({ color: 0x00ffff })
+const material = new THREE.MeshPhongMaterial({ color: 0x00ffff })
 const mesh = new THREE.Mesh(geometry, material)
+
+material.color.set('#ffffff')
 
 const v3 = new THREE.Vector3(1, 2, 3)
 v3.normalize()
@@ -40,7 +42,7 @@ const pointLightHelper = new THREE.PointLightHelper(pointLight, 10)
 pointLight.decay = 0.0
 pointLight.position.set(50, 50, 50)
 
-const ambient = new THREE.AmbientLight(0xffffff, 1.0)
+const ambient = new THREE.AmbientLight(0xffffff, 10.0)
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5)
 directionalLight.position.set(50, 50, 50)
