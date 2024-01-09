@@ -20,11 +20,16 @@ const scene = new THREE.Scene()
 //     scene.add(mesh)
 //   }
 // }
-const geometry = new THREE.SphereGeometry(50, 8, 8)
+const geometry = new THREE.BoxGeometry(50, 50, 50)
 // console.log(geometry.attributes.position);
 // console.log(geometry.index);
-const material = new THREE.MeshLambertMaterial({ color: 0x00ffff, wireframe: true })
+const material = new THREE.MeshLambertMaterial({ color: 0x00ffff })
 const mesh = new THREE.Mesh(geometry, material)
+
+const v3 = new THREE.Vector3(1, 2, 3)
+v3.normalize()
+// console.log(v3);
+mesh.translateOnAxis(v3, 100)
 scene.add(mesh)
 // scene.add(Model)
 
@@ -75,6 +80,8 @@ document.body.appendChild(stats.domElement)
 function render() {
   // const spt = clock.getDelta() * 1000
   // console.log(1000 / spt)
+  mesh.rotation.x += 0.01
+  mesh.rotateY(0.01)
   stats.update()
   requestAnimationFrame(render)
   // mesh.rotateX(0.01)
