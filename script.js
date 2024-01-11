@@ -24,15 +24,19 @@ const geometry = new THREE.BoxGeometry(50, 50, 50)
 // console.log(geometry.attributes.position);
 // console.log(geometry.index);
 const material = new THREE.MeshPhongMaterial({ color: 0x00ffff })
+const material1 = JSON.parse(JSON.stringify(material))
 const mesh = new THREE.Mesh(geometry, material)
+const mesh2 = new THREE.Mesh(geometry, material)
+mesh2.position.x = 100
+console.log(mesh, mesh2);
 
-material.color.set('#ffffff')
+material.color.set('#00ffff')
 
-const v3 = new THREE.Vector3(1, 2, 3)
-v3.normalize()
+// const v3 = new THREE.Vector3(1, 2, 3)
+// v3.normalize()
 // console.log(v3);
-mesh.translateOnAxis(v3, 100)
-scene.add(mesh)
+// mesh.translateOnAxis(v3, 100)
+scene.add(mesh, mesh2)
 // scene.add(Model)
 
 const axesHelper = new THREE.AxesHelper(100)
@@ -82,8 +86,8 @@ document.body.appendChild(stats.domElement)
 function render() {
   // const spt = clock.getDelta() * 1000
   // console.log(1000 / spt)
-  mesh.rotation.x += 0.01
-  mesh.rotateY(0.01)
+  // mesh.rotation.x += 0.01
+  // mesh.rotateY(0.01)
   stats.update()
   requestAnimationFrame(render)
   // mesh.rotateX(0.01)
