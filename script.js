@@ -3,6 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import Stats from 'three/examples/jsm/libs/stats.module'
 import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js'
 import Model from './model'
+import Group from './building'
 
 const scene = new THREE.Scene()
 
@@ -20,24 +21,26 @@ const scene = new THREE.Scene()
 //     scene.add(mesh)
 //   }
 // }
-const geometry = new THREE.BoxGeometry(50, 50, 50)
+// const geometry = new THREE.BoxGeometry(50, 50, 50)
 // console.log(geometry.attributes.position);
 // console.log(geometry.index);
-const material = new THREE.MeshPhongMaterial({ color: 0x00ffff })
+/* const material = new THREE.MeshPhongMaterial({ color: 0x00ffff })
 const material1 = JSON.parse(JSON.stringify(material))
 const mesh = new THREE.Mesh(geometry, material)
 const mesh2 = new THREE.Mesh(geometry, material)
-mesh2.position.x = 100
-console.log(mesh, mesh2);
+mesh2.position.x = 100 */
+// console.log(mesh, mesh2);
 
-material.color.set('#00ffff')
+// material.color.set('#00ffff')
 
 // const v3 = new THREE.Vector3(1, 2, 3)
 // v3.normalize()
 // console.log(v3);
 // mesh.translateOnAxis(v3, 100)
-scene.add(mesh, mesh2)
+// scene.add(mesh, mesh2)
 // scene.add(Model)
+
+scene.add(Group)
 
 const axesHelper = new THREE.AxesHelper(100)
 
