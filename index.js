@@ -4,6 +4,7 @@ import Stats from 'three/examples/jsm/libs/stats.module'
 import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js'
 import Model from './model'
 import Group from './building'
+import Texture from './texture'
 
 const scene = new THREE.Scene()
 
@@ -40,7 +41,8 @@ mesh2.position.x = 100 */
 // scene.add(mesh, mesh2)
 // scene.add(Model)
 
-scene.add(Group)
+// scene.add(Group)
+scene.add(Texture)
 
 const axesHelper = new THREE.AxesHelper(100)
 
@@ -75,6 +77,8 @@ scene.add(axesHelper)
 scene.add(ambient)
 // scene.add(directionalLight)
 // scene.add(directionalLightHelper)
+
+console.log(scene.children);
 
 renderer.setSize(width, height)
 // renderer.render(scene, camera)
