@@ -4,7 +4,7 @@ import Stats from 'three/examples/jsm/libs/stats.module'
 import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js'
 import Model from './model'
 import Group from './building'
-import Texture from './texture'
+import {mesh, texture} from './texture'
 
 const scene = new THREE.Scene()
 
@@ -42,7 +42,8 @@ mesh2.position.x = 100 */
 // scene.add(Model)
 
 // scene.add(Group)
-scene.add(Texture)
+// scene.add(Model)
+scene.add(mesh)
 
 const axesHelper = new THREE.AxesHelper(100)
 
@@ -71,12 +72,15 @@ const camera = new THREE.PerspectiveCamera(55, width / height, 0.1, 1300)
 camera.position.set(200, 200, 200)
 camera.lookAt(100, 0, 0)
 
+const gridHelper = new THREE.GridHelper(300, 20, 0xff0000, 0x00ff00)
+
 scene.add(axesHelper)
 // scene.add(pointLight)
 // scene.add(pointLightHelper)
 scene.add(ambient)
 // scene.add(directionalLight)
 // scene.add(directionalLightHelper)
+scene.add(gridHelper)
 
 console.log(scene.children);
 
@@ -95,6 +99,7 @@ function render() {
   // console.log(1000 / spt)
   // mesh.rotation.x += 0.01
   // mesh.rotateY(0.01)
+  texture.offset.x += 0.01
   stats.update()
   requestAnimationFrame(render)
   // mesh.rotateX(0.01)
