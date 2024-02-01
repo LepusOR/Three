@@ -5,6 +5,7 @@ import { GUI } from 'three/examples/jsm/libs/lil-gui.module.min.js'
 import Model from './model'
 import Group from './building'
 import {mesh, texture} from './texture'
+import gltf from './gltf'
 
 const scene = new THREE.Scene()
 
@@ -43,7 +44,7 @@ mesh2.position.x = 100 */
 
 // scene.add(Group)
 // scene.add(Model)
-scene.add(mesh)
+scene.add(gltf)
 
 const axesHelper = new THREE.AxesHelper(100)
 
@@ -60,7 +61,7 @@ directionalLight.position.set(50, 50, 50)
 const directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight, 10)
 
 const renderer = new THREE.WebGLRenderer({
-  antialias: true //抗锯齿
+  antialias: true, //抗锯齿
 })
 renderer.setPixelRatio(window.devicePixelRatio) //设置像素比
 renderer.setClearColor(0x444444)
@@ -70,7 +71,7 @@ const height = window.innerHeight
 
 const camera = new THREE.PerspectiveCamera(55, width / height, 0.1, 1300)
 camera.position.set(200, 200, 200)
-camera.lookAt(100, 0, 0)
+camera.lookAt(0, 0, 0)
 
 const gridHelper = new THREE.GridHelper(300, 20, 0xff0000, 0x00ff00)
 
@@ -86,6 +87,7 @@ console.log(scene.children);
 
 renderer.setSize(width, height)
 // renderer.render(scene, camera)
+renderer.outputColorSpace = THREE.SRGBColorSpace;
 
 const stats = new Stats()
 
